@@ -16,17 +16,33 @@ public class Fibonacci {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        int n1=0,n2=1,n3,i;
+     public static void main(String args[])
+    {
         System.out.println("Input : ");
         Scanner input = new Scanner(System.in);
-        int count = input.nextInt();
-        System.out.print(n2);   
-        for(i=1;i<count;++i)   {    
-            n3=n1+n2;    
-            System.out.print(" "+n3);    
-            n1=n2;    
-            n2=n3;    
-        }    
+        int n = input.nextInt();
+        System.out.println("Sum of Fibonacci" + 
+        " numbers is : "+ calculateSum(n));
+    }
+
+    static int calculateSum(int n)
+    {
+        if (n <= 0)
+           return 0;
+      
+        int fibo[]=new int[n+1];
+        fibo[0] = 0; fibo[1] = 1;
+      
+        // Initialize result
+        int sum = fibo[0] + fibo[1];
+      
+        // Add remaining terms
+        for (int i=2; i<=n; i++)
+        {
+            fibo[i] = fibo[i-1]+fibo[i-2];
+            sum += fibo[i];
+        }
+      
+        return sum;
     }
 }
